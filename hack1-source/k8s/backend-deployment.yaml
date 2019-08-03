@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: backend
+  template:
+    metadata:
+      labels:
+        component: backend
+    spec:
+      containers:
+        - name: whereami-back
+          image: avto1997/whereami-back
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL
+              value: jdbc:mysql://mysql-cluster-ip-service:3306/location_db?useSSL=false&allowPublicKeyRetrieval=true
+            - name: DB_USERNAME
+              value: root
+            - name: DB_PASS
+              value: gameri21

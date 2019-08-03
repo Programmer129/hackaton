@@ -1,0 +1,9 @@
+1) Get location from device
+
+2) Sent to server
+
+3) Get lat/long based on location
+
+4) Save lat/long and location to DB
+
+5) Return name of country

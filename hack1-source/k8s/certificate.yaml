@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: whereami-com-tls
+spec:
+  secretName: whereami-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: whereami.com
+  dnsNames:
+    - whereami.com
+    - www.whereami.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - whereami.com
+          - www.whereami.com
